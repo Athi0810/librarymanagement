@@ -3,6 +3,7 @@
 # Frontend build
 FROM node:20-bullseye-slim AS frontend-build
 WORKDIR /workspace/frontend
+RUN apt-get update && apt-get install -y --no-install-recommends python3 build-essential make g++ ca-certificates && rm -rf /var/lib/apt/lists/*
 COPY frontend/package.json ./
 COPY frontend/package-lock.json ./
 COPY frontend/vite.config.js ./
