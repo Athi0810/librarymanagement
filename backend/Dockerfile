@@ -4,10 +4,11 @@
 FROM node:20-alpine AS frontend-build
 WORKDIR /workspace/frontend
 COPY frontend/package.json ./
+COPY frontend/package-lock.json ./
 COPY frontend/vite.config.js ./
 COPY frontend/public ./public
 COPY frontend/src ./src
-RUN npm install
+RUN npm ci
 RUN npm run build
 
 # Backend build
