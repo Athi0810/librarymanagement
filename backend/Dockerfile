@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Frontend build
-FROM node:20-alpine AS frontend-build
+FROM node:20-bullseye-slim AS frontend-build
 WORKDIR /workspace/frontend
 COPY frontend/package.json ./
 COPY frontend/package-lock.json ./
