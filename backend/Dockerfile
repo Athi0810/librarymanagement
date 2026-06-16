@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends python3 build-e
 COPY frontend/package.json ./
 COPY frontend/package-lock.json ./
 COPY frontend/vite.config.js ./
+COPY frontend/index.html ./
 COPY frontend/public ./public
 COPY frontend/src ./src
 ENV NODE_OPTIONS=--max-old-space-size=4096
