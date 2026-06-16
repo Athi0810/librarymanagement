@@ -12,6 +12,14 @@ ENV NODE_OPTIONS=--max-old-space-size=4096
 ENV DEBUG=vite:*
 RUN npm ci
 RUN npm run build 2>&1 | tee build.log
+RUN if [ -d dist ]; then \
+			echo "Frontend build produced dist"; \
+		else \
+			echo "ERROR: frontend dist not found"; \
+			echo "--- workspace listing ---"; ls -la || true; \
+			echo "--- build.log ---"; cat build.log || true; \
+			exit 1; \
+		fi
 
 # Backend build
 FROM maven:3.9.4-eclipse-temurin-17 AS backend-build
