@@ -8,8 +8,10 @@ COPY frontend/package-lock.json ./
 COPY frontend/vite.config.js ./
 COPY frontend/public ./public
 COPY frontend/src ./src
+ENV NODE_OPTIONS=--max-old-space-size=4096
+ENV DEBUG=vite:*
 RUN npm ci
-RUN npm run build
+RUN npm run build 2>&1 | tee build.log
 
 # Backend build
 FROM maven:3.9.4-eclipse-temurin-17 AS backend-build
