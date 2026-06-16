@@ -1,0 +1,22 @@
+# Node artifacts
+node_modules
+frontend/node_modules
+frontend/dist
+
+# Java artifacts
+backend/target
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+
+# Logs
+*.log
